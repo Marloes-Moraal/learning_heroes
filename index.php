@@ -50,43 +50,43 @@
                 $sql = "SELECT * FROM cookies";
                 $result = $conn->query($sql);
 
-                  if ($result->num_rows > 0) {
-            // output data of each row
-                while($row = $result->fetch_assoc()) {
-                $gramCookie = $row['calories'] / $row['weight'];
-                $caloriesPerhundredGram = $gramCookie * 100;
-                $cookieId = $row['id'];
-                $sql = "select * from cookie_ingredients left join ingredients on cookie_ingredients.ingredient_id = ingredients.id where cookie_ingredients.cookie_id = $cookieId order by name ASC";
-                $resultIngredienst = $conn->query($sql)->fetch_all(MYSQLI_ASSOC);
-                $ingredients = [];
-                    foreach($resultIngredienst as $ingredient) {
-                        $ingredients[] = $ingredient['name'];
+                if ($result->num_rows > 0) {
+                    while($row = $result->fetch_assoc()) {
+                        $gramCookie = $row['calories'] / $row['weight'];
+                        $caloriesPerhundredGram = $gramCookie * 100;
+                        $cookieId = $row['id'];
+                        $sql = "select * from cookie_ingredients left join ingredients on cookie_ingredients.ingredient_id = ingredients.id where cookie_ingredients.cookie_id = $cookieId order by name ASC";
+                        $resultIngredienst = $conn->query($sql)->fetch_all(MYSQLI_ASSOC);
+                        $ingredients = [];
+                            foreach($resultIngredienst as $ingredient) {
+                                $ingredients[] = $ingredient['name'];
+                            }
+        ?>
+                        <tr class='border border-gray'>
+                            <td class='py-2 text-center'>
+                                <?= $row["name"]; ?>
+                            </td>
+                            <td class='py-2 text-center'>
+                                <?= $row["weight"]; ?>
+                            </td>
+                            <td class='py-2 text-center'>
+                                <?= number_format($caloriesPerhundredGram, 0); ?>
+                            </td>
+                            <td>
+                                <?php
+                                echo implode(', ', $ingredients);
+                                ?>
+                            </td>
+                        </tr>
+        <?php
                     }
-                ?>
-                    <tr class='border border-gray'>
-                        <td class='py-2 text-center'>
-                            <?= $row["name"]; ?>
-                        </td>
-                        <td class='py-2 text-center'>
-                            <?= $row["weight"]; ?>
-                        </td>
-                        <td class='py-2 text-center'>
-                            <?= number_format($caloriesPerhundredGram, 0); ?>
-                        </td>
-                        <td class="">
-                            <?php
-                            echo implode(', ', $ingredients);
-                            ?>
-                        </td>
-                    </tr>
-                <?php
-                }
-                echo "</table>";
+                    echo "</table>";
+
                 } else {
                     echo "0 results";
                 }
 
-//            $conn->close();
+          $conn->close();
 
         ?>
 </body>
