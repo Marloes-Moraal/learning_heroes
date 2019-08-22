@@ -29,36 +29,35 @@
             Calories
         </th>
     </tr>
-<?php
+        <?php
 
-    $servername = "localhost";
-    $username = "moraal";
-    $password = "password";
-    $dbname = "Cookies";
+            $servername = "localhost";
+            $username = "moraal";
+            $password = "password";
+            $dbname = "Cookies";
 
-    // Create connection
-         $conn = new mysqli($servername, $username, $password, $dbname);
-    // Check connection
-         if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-          }
+            // Create connection
+                 $conn = new mysqli($servername, $username, $password, $dbname);
+            // Check connection
+                 if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                  }
 
-        $sql = "SELECT Name, Weight, Calories FROM Cookies";
-        $result = $conn->query($sql);
+                $sql = "SELECT Name, Weight, Calories FROM Cookies";
+                $result = $conn->query($sql);
 
-          if ($result->num_rows > 0) {
-    // output data of each row
-        while($row = $result->fetch_assoc()) {
-            echo "<tr><td>" . $row["Name"]. "</td><td>". $row["Weight"]. " </td><td>" . $row["Calories"] . "</td></tr>";
-        }
-        echo <table>
-        } else {
-            echo "0 results";
-        }
+                  if ($result->num_rows > 0) {
+            // output data of each row
+                while($row = $result->fetch_assoc()) {
+                    echo "<tr><td>" . $row["Name"] . "</td><td>" . $row["Weight"] . " </td><td>" . $row["Calories"] . "</td></tr>";
+                }
+                echo "</table>";
+                } else {
+                    echo "0 results";
+                }
 
-    $conn->close();
+            $conn->close();
 
-?>
-
+        ?>
 </body>
 </html>
