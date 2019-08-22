@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Learning Heroes</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" type="text/css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -18,9 +18,9 @@
 
 
 
-<table>
+<table class="border-collapse float-left border-gray-400 py-4 px-4 ">
     <tr>
-        <th>
+        <th class="py-2 px-12 text-center">
             Cookies
         </th>
         <th>
@@ -31,7 +31,7 @@
         </th>
     </tr>
     <tr>
-        <td>
+        <td class="py-2 text-center">
             Cookies
         </td>
         <td>
@@ -42,7 +42,7 @@
         </td>
     </tr>
     <tr>
-        <td>
+        <td class="py-2 text-center">
             Cookies
         </td>
         <td>
@@ -53,7 +53,7 @@
         </td>
     </tr>
     <tr>
-        <td>
+        <td class="py-2 text-center">
             Cookies
         </td>
         <td>
