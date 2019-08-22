@@ -16,35 +16,6 @@
     </ul>
 </nav>
 
-<?php
-
-    $servername = "localhost";
-    $username = "moraal";
-    $password = "password";
-    $dbname = "Cookies";
-
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    // Check connection
-    if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-    }
-
-    $sql = "SELECT Name, Weight, Calories FROM Cookies";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-    echo "<br> id: ". $row["Name"]. " - Name: ". $row["Weight"]. " " . $row["Calories"] . "<br>";
-    }
-    } else {
-    echo "0 results";
-    }
-
-    $conn->close();
-
-?>
 
 <table class="border-collapse float-left border-gray-400 py-4 px-4 ">
     <tr>
@@ -58,40 +29,36 @@
             Calories
         </th>
     </tr>
-    <tr>
-        <td class="py-2 text-center">
-            Cookies
-        </td>
-        <td>
-            Weight
-        </td>
-        <td>
-            Calories
-        </td>
-    </tr>
-    <tr>
-        <td class="py-2 text-center">
-            Cookies
-        </td>
-        <td>
-            Weight
-        </td>
-        <td>
-            Calories
-        </td>
-    </tr>
-    <tr>
-        <td class="py-2 text-center">
-            Cookies
-        </td>
-        <td>
-            Weight
-        </td>
-        <td>
-            Calories
-        </td>
-    </tr>
-</table>
+<?php
+
+    $servername = "localhost";
+    $username = "moraal";
+    $password = "password";
+    $dbname = "Cookies";
+
+    // Create connection
+         $conn = new mysqli($servername, $username, $password, $dbname);
+    // Check connection
+         if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+          }
+
+        $sql = "SELECT Name, Weight, Calories FROM Cookies";
+        $result = $conn->query($sql);
+
+          if ($result->num_rows > 0) {
+    // output data of each row
+        while($row = $result->fetch_assoc()) {
+            echo "<tr><td>" . $row["Name"]. "</td><td>". $row["Weight"]. " </td><td>" . $row["Calories"] . "</td></tr>";
+        }
+        echo <table>
+        } else {
+            echo "0 results";
+        }
+
+    $conn->close();
+
+?>
 
 </body>
 </html>
